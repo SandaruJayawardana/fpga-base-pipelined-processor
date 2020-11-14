@@ -1,0 +1,59 @@
+NOP
+CLAC
+NOP
+MEMADD 0
+ADDI R7,R7,126 // width of down sampled image -1 // R_I_3 track the first cell of the kernel
+ADDI R_I_1,R_I_1,65024//END address of first image 5X5 IMAGE
+ADDI R3,R3,253//no of pixel skip to lower raw = column size( 5 ) - 2
+ADDI R5,R5,2//Gasssian kernal value 1,2,4
+ADDI R6,R6,16//for normalize gaussian window
+ADDI R_I_2,R_I_2,65025 //location to save the filtered image 
+READ
+MOV R1,MDR
+INCRE MAR
+READ
+MOV R2,MDR
+INCRE MAR
+READ
+ADD R1,R1,MDR
+ADD MAR,MAR,R3
+READ
+ADD R2,R2,MDR
+INCRE MAR
+READ
+MOV R4,MDR
+INCRE MAR
+READ
+ADD R2,R2,MDR
+ADD MAR,MAR,R3
+MUL R4,R4,R5
+READ
+MUL R4,R4,R5
+ADD R1,R1,MDR
+INCRE MAR
+READ
+ADD R2,R2,MDR
+INCRE MAR
+READ
+ADD R1,R1,MDR
+MUL R2,R2,R5
+ADD R1,R1,R4
+ADD R1,R1,R2
+MOV MAR,R_I_2
+DIV R1,R1,R6
+MOV MDR,R1
+WRITE // STORE convoluted value
+INCRE R_I_2//set the location to store next pixel
+XOR AC,R8,R7 // CHECK WHETHER IT IS A END OF A RAW
+JUMPZ 52
+ADDI R8,R8,1
+ADD R_I_3,R_I_3,R5 //INCREMENT THE START PIXEL OF THE KERNEL BY 2
+MOV MAR,R_I_3
+SUB AC,AC,AC
+JUMPZ 10
+ADDI R_I_3,R_I_3,258 // CHANGE THE RAW
+SUB R8,R8,R8
+MOV MAR,R_I_3
+XOR AC,R_I_1,R_I_3
+JUMPNZ 10
+STOP
