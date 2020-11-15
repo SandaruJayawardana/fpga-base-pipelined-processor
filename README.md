@@ -1,2 +1,2 @@
-# fpga-base-pipelined-processor
-Custom 16bit pipelined processor which was designed mainly to downsample a image. It can handle 512kb of data memory and 128kb instruction memory. It has 11 simple instructions and 6 extended instructions as shown in below
+# FPGA-Base-Pipelined-Processor
+> Custom 16bit pipelined RISC processor which was designed mainly to downsample a image. It can handle 512kb of data memory and 128kb instruction memory. It has 11 simple instructions and 6 extended instructions as shown in below. There are 3 18bit registers to handle the data read/write operations in data ram. We implemented python base assembler algorithm to convert the assembly code into machine code with handling the possible pipeline hazards in input assembly code (Therefore user doesn't need to worry about the pipeline hazards). 
