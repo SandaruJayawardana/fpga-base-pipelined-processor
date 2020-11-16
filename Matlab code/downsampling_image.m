@@ -42,7 +42,7 @@ imshow(sampled_img);
 disp(sampled_img);
 %ERROR CALCULATION
 
-    %MATLAB DOWNSAMPLED IMAGE
+%MATLAB DOWNSAMPLED IMAGE
 start_addr=[2 2];
 addr=start_addr;
 cal_pix=0;
