@@ -13,5 +13,5 @@
 <img src="https://github.com/SandaruJayawardana/fpga-base-pipelined-processor/blob/main/Data_path.png" alt="alt text" width="600" height="600">
 
 * __Mux selections for A, B, C and D buses__
-> Selection bit patterns are similar for each bus
+> Selection bit patterns are similar for all buses
 <img src="https://github.com/SandaruJayawardana/fpga-base-pipelined-processor/blob/main/mux_sel_reg_bank.png" alt="alt text" width="200" height="600">
